@@ -1,0 +1,44 @@
+<%- include('partials/header') -%>
+
+
+<div class="text-center background-brand">
+    <h1 class="pt-5">Categories</h1>
+    <p class="lead pb-5">Choose your product from the category you like</p>
+
+    <form action="/category" method="POST">
+        <div class="input-group mb-3 mx-auto" style="max-width: 35rem;">
+            <input type="text" class="form-control" placeholder="Search for your category" name="categoryname">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary " type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="row mx-auto">
+    <div class="col-6 mx-auto">
+        <div class="row">
+
+            <% categoriess.forEach(function(category){%>
+            <div class="col-md-6 col-lg-4 my-2 p-1">
+                <div class="card brand-card">
+                    <form action="/products" method="post">
+
+                        <input type="hidden" name="category" value="<%= category.category %>">
+                        <img class="card-img" style="max-height:12rem;" src=<%="../images/"+category.img%> alt="">
+                        <div class="card-header">
+                            <p class="lead"><%=category.category %></p>
+                            <div class="text-center pt-3">
+                                <button type="submit" class="btn btn-primary">Explore</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+<%})%>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

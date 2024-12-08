@@ -1,0 +1,41 @@
+<%- include('partials/header') -%>
+<!--The error req is not defined occurs  when you include a partial template (like header.ejs) in another template (home.ejs), the req object is not automatically passed to the partial template. You need to explicitly pass it when including the partial file.-->
+
+
+    <section class="contact p-5">
+        <div class="container-fluid">
+            <h1 class="text-dark text-uppercase mb-4 text-center">udi Sales and Purchase</h1>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-5 col-sm-6 pb-4 bg-dark boxx text-light">
+                    <form action="">
+                        <div class="row mt-3">
+                            <div class="col-md-6 py-2">
+                                <label for="FirstName" class="label">First Name</label>
+                                <input type="text" class="form-control my-2 p-2 input" name="fname">
+                            </div>
+                            <div class="col-md-6 py-2">
+                                <label for="FirstName" class="label">Last Name</label>
+                                <input type="text" class="form-control my-2 p-2 input" name="lname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group py-2">
+                                <label for="email" class="label">Email Address</label>
+                                <input type="email" class="form-control my-2 p-2 input" name="username">
+                            </div>
+                            <div class="form-group py-2">
+                                <label for="password" class="label">Password</label>
+                                <input type="password" class="form-control my-2 p-2 input" name="password">
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 py-2">
+                            <button class="btn btn-danger p-2 fw-bold text-uppercase submit-button text-light">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('partials/footer') -%>

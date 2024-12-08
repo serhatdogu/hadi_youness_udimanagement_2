@@ -1,0 +1,59 @@
+<%- include('partials/header') -%>
+
+
+<div class="text-center background-brand pb-5">
+    <h1 class="pt-5">Brands</h1>
+    <p class="lead pb-5">Choose your product from the brand you like</p>
+
+    <!-- Loop over the brands to display them -->
+    <div class="row mx-auto">
+        <div class="col-6 mx-auto">
+            <div class="row">
+                <% brands.forEach(function(brand) { %>
+                    <div class="col-md-6 col-lg-4 my-2 p-1">
+                        <div class="card brand-card">
+                            <!-- Make sure the action points to '/brand/productsBrands' -->
+                            <form action="/brand/productBrands" method="post">
+                                <input type="hidden" name="brand" value="<%= brand.brand %>">
+                                <img class="card-img" style="max-height:12rem;" src="<%= '/images/' + brand.img %>" alt="">
+                                <div class="card-header">
+                                    <p class="lead">
+                                        <%= brand.brand %>
+                                    </p>
+                                    <div class="text-center pt-3">
+                                        <button type="submit" class="btn btn-primary">Explore</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination Controls -->
+<div class="text-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                </li>
+            <% } %>
+            <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<%- include('partials/footer') -%>

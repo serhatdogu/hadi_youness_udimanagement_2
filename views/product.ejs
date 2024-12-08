@@ -1,0 +1,45 @@
+<%- include('partials/header') -%>
+
+
+<div class="container mt-5">
+    <!-- Product Details Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <img src="<%= item.img %>" alt="<%= item.name %>" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h1><%= item.name %></h1>
+            <p><%= item.description %></p>
+            <h4><%= item.price %> USD</h4>
+
+            <!-- Optionally, add a button to add to cart -->
+            <form action="/addToCart" method="post">
+                <input type="hidden" name="productId" value="<%= item._id %>">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Related Products Section (If applicable) -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h3>Related Products</h3>
+            <div class="row">
+                <% item.forEach(function(relatedItem) { %>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="<%= relatedItem.img %>" class="card-img-top" alt="<%= relatedItem.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= relatedItem.name %></h5>
+                                <p class="card-text"><%= relatedItem.description1 %></p>
+                                <a href="/products/<%= relatedItem._id %>" class="btn btn-primary">View Product</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,91 @@
+<%- include('partials/header') -%>
+<!--The error req is not defined occurs  when you include a partial template (like header.ejs) in another template (home.ejs), the req object is not automatically passed to the partial template. You need to explicitly pass it when including the partial file.-->
+
+
+
+
+
+<div
+  style="background-image: url(../images/background5.jpg); background-size: cover; background-position: center; height: 38vh; background-repeat: no-repeat; margin: 0;">
+  <div class="row">
+    <div class="col col-md-6 text-center mx-auto">
+      <h1 class="p-4">Welcome to the E-Commerce Website</h1>
+      <h6>Check out top quality items and exclusive offers.</h6>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center m-0 p-2 bg-light">
+  <div class="col-4">
+    <p class="lead">Top Quality</p>
+  </div>
+  <div class="col-4">
+    <p class="lead">Fast Delivery</p>
+  </div>
+  <div class="col-4">
+    <p class="lead">Best Prices</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h2 class="heading-section mb-3 pb-md-4">Brands</h2>
+      <p class="lead mb-5">Check out our various brands.</p>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <% brandss.forEach(function(brand){ %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card card-fixed-size">
+              <form action="/productBrands" method="post">
+                <input type="hidden" name="brand" value="<%= brand.brand %>">
+                <button type="submit" class="btn p-0">
+                  <div class="card-img-container">
+                    <img src="<%='../images/' + brand.img %>" alt="<%= brand.brand %>" class="card-img">
+                  </div>
+                  <div class="card-body text-center">
+                    <h6 class="card-text">
+                      <%= brand.brand %>
+                    </h6>
+                  </div>
+                </button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row text-muted text-center">
+    <div class="col m-4">
+      <h1 class="display-4 mb-4">Best Sellers</h1>
+      <div class="underline-dark mb-4"></div>
+      <p class="lead">Check out some of our Best Seller Items</p>
+    </div>
+  </div>
+  <div class="row align-items-center text-center mx-auto">
+    <% best.forEach(function(bestseller) { %>
+      <div class="col-lg-4 col-10 mx-auto">
+        <div class="card card-fixed-size">
+          <div class="card-img-container">
+            <img src="<%= bestseller.img %>" alt="Product Image" class="card-img">
+          </div>
+          <div class="card-body">
+            <h5 class="text-uppercase font-weight-bold mb-3">
+              <%= bestseller.item.brand %>
+            </h5>
+            <a href="/products/<%= bestseller.item._id %>" class="btn p-2 text-uppercase font-weight-bold btn-warning text-light">
+              See Details
+            </a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

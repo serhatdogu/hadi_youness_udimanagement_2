@@ -1,0 +1,73 @@
+<%- include('partials/header') -%>
+
+
+
+
+    <div class="text-center background-brand pb-5">
+        <h1 class="pt-5">Products</h1>
+        <p class="lead pb-5">Choose your product from the category you like</p>
+
+        <form action="">
+            <div class="input-group mb-3 mx-auto" style="max-width: 35rem;">
+                <input type="text" class="form-control" aria-describedby="basic-addon2"
+                    placeholder="Search for your brand" name="brandname">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary " type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <section class="bg-light">
+        <div class="container">
+            <div class="row">
+                <% items.forEach(function(item) { %>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- 4 items per row on large screens -->
+                        <div class="card h-100 mt-4">
+                            <a href="/products/<%= item.id %>" style="text-decoration:none;">
+                                <img src=<%=item.imgUrl %> alt="Product Image" class="card-img-top product-image">
+                                <div class="card-body">
+                                    <h6 class="card-title product-name">
+                                        <%= item.title %>
+                                    </h6>
+                                    <p class="h5 text-end product-price">
+                                        Price:<span class="font-weight-bold">
+                                            <%= item.price %>
+                                        </span>
+                                    </p>
+                                    <p class="product-brand">
+                                        Brand: <span class="font-weight-bold">
+                                            <%= item.brand %>
+                                        </span>
+                                    </p>
+                                    <p class="product-category">
+                                        Category: <span class="font-weight-bold">
+                                            <%= item.category %>
+                                        </span>
+                                    </p>
+                                    <p class="product-size">
+                                        Size: <span class="font-weight-bold">
+                                            <%= item.size %>
+                                        </span>
+                                    </p>
+                                    <p class="product-model">
+                                        Model: <span class="font-weight-bold">
+                                            <%= item.description %>
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <%- include('partials/footer') -%>

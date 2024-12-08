@@ -1,0 +1,40 @@
+
+<%- include('partials/header') -%>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products by Brand - <%= brand %></title>
+    <link rel="stylesheet" href="path/to/your/styles.css"> <!-- Adjust the path to your CSS -->
+</head>
+<body>
+    <h1>Products by Brand: <%= brand %></h1>
+    <div class="row align-items-center text-center mx-auto">
+        <% products.forEach(function(product) { %>
+            <div class="col-lg-4 col-10 mx-auto">
+                <div class="card card-1 text-dark my-4 mx-auto">
+                    <img src="<%= product.imgUrl %>" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="text-uppercase font-weight-bold mb-3 card-list-item">
+                            <%= product.title %>
+                        </h5>
+                        <p><%= product.description %></p>
+                        <p><strong>Price: <%= product.price %></strong></p>
+                        <a href="/products/<%= product._id %>" class="btn p-2 text-uppercase font-weight-bold price-card-button btn-warning text-light">
+                            See Product Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
+
+
+<%- include('partials/footer') -%>
+
+

@@ -1,0 +1,276 @@
+body {
+    font-family: sans-serif !important;
+}
+
+/* Header */
+.navbar-nav>.active>a {
+    color: #318fb5;
+}
+
+.nav-item>a:hover {
+    color: #318fb5;
+}
+
+/* Navbar Toggler Button (Hamburger Lines) */
+.navbar-toggler .line1,
+.navbar-toggler .line2,
+.navbar-toggler .line3 {
+    width: 23px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #fff;
+    transition: all 0.4s ease;
+}
+
+/* When toggled */
+.change .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.change .line2 {
+    opacity: 0;
+}
+
+.change .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Menu item styles */
+.menu-item {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: lighter;
+    transition: color .5s;
+}
+
+.menu-item:hover {
+    color: #318fb5;
+}
+
+/* Modal specific styles */
+.modal-header {
+    background-color: #318fb5;
+    color: white;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-footer .btn {
+    background-color: #318fb5;
+    color: white;
+}
+
+.modal-footer .btn:hover {
+    background-color: #286d90; /* Slightly darker on hover */
+}
+
+.modal-body .form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Navbar styles */
+.navbar-collapse {
+    display: none;  /* Hide collapse menu by default */
+}
+
+.navbar-collapse.show {
+    display: block !important;  /* Force collapse to display when toggled */
+}
+
+.nav-button:focus {
+    outline: none;
+}
+
+/* Background for brand section */
+.background-brand {
+    background-image: url(../images/background2.jpg);
+}
+
+/* PRODUCTS Section */
+.products {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.products li {
+    list-style-type: none;
+    padding: 0;
+    width: 34rem; /* Adjust to desired size */
+    height: 25rem;
+    border-bottom: solid 0.1rem #318fb5;
+    margin: 15px 10px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+}
+
+.product-name {
+    font-weight: bold;
+    color: #318fb5;
+}
+
+.product-image {
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
+.product-brand {
+    color: #464141;
+}
+
+.product-price {
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40; /* Dark footer background */
+    color: #ffffff;
+}
+
+footer a {
+    color: #318fb5;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #1f607a; /* Slightly darker blue when hovered */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        display: none; /* Ensures the collapse menu is hidden on smaller screens */
+    }
+
+    .navbar-collapse.show {
+        display: block !important; /* Forces the collapse to display when expanded */
+    }
+}
+
+
+.card-title {
+    font-size: 1.25rem; /* Adjust the size to make it larger */
+    font-weight: bold;  /* Make it bold for emphasis */
+    color: #333;        /* Use a darker color for better contrast */
+    font-family: 'Arial', sans-serif; /* Use a clean, readable font */
+    text-align: left; /* Optional: Center align the text */
+}
+
+
+/**/
+.card-fixed-size {
+    width: 18rem; /* Set fixed card width */
+    height: 24rem; /* Set fixed card height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+  }
+
+  .card-img-container {
+    width: 100%;
+    height: 14rem; /* Adjust height to fit images proportionally */
+    overflow: hidden; /* Ensures images don't overflow the container */
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+  }
+
+  .card-body {
+    padding: 1rem;
+    text-align: center;
+  }
+
+
+/**/
+.card-img {
+    object-fit: contain; /* Ensures the full image is visible */
+    width: 100%;         /* Makes the image take up the full card width */
+    height: 12rem;       /* Keeps the card height consistent */
+    background-color: #f8f9fa; /* Optional: Adds a background color for padding space */
+    border-radius: 0.25rem; /* Optional: Adds slight rounding to the corners */
+}
+
+
+/* Ensure images are fully displayed and maintain aspect ratio */
+.card-img-top {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+
+  }
+
+  /* Equal card heights */
+  .card {
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .col-md-4 {
+      flex: 0 0 33.3333%; /* 3 items per row on medium screens */
+    }
+  }
+
+  @media (min-width: 992px) {
+    .col-lg-3 {
+      flex: 0 0 25%; /* 4 items per row on large screens */
+    }
+  }
+
+
+/* Style for the entire table */
+.table th, .table td {
+
+    text-align: center;
+}
+
+/* Make Bill Type field more prominent */
+.type-column {
+    font-weight: bold;
+    color: #0056b3; /* Blue color for better visibility */
+    font-size: 16px;
+}
+
+/* Make Address field more prominent */
+.address-column {
+    font-style: normal;
+    color: #28a745; /* Green color to highlight address */
+    font-size: 16px;
+}
+/* Make Notes field more prominent */
+.notes-column {
+    font-family: 'Patrick Hand', cursive;  /* Patrick Hand font */
+    font-weight: normal;                  /* Ensures font is readable */
+    color: #b35100;                       /* Text color */
+    font-size: 18px;                      /* Readable font size */
+    line-height: 1.8;                     /* Line height for better readability */
+}
+
+
+
+
+
+/* Optional: style table header */
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Optional: style rows when hovering */
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}

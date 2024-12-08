@@ -1,0 +1,55 @@
+<%- include('partials/header') -%>
+
+<br>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Plate</th>
+            <th>Year</th>
+            <th>Inspection Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% vehicles.forEach((vehicle, index) => { %>
+            <tr>
+                <!-- Clickable Title -->
+                <td class="type-column"><%= vehicle.name %>
+
+</td>
+                <td><%= vehicle.description %></td>
+                <td class="address-column">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#vehicleModal<%= index %>">
+                        <img src="<%= vehicle.imgUrl.startsWith('http') ? vehicle.imgUrl : '/' + vehicle.imgUrl %>"
+                         alt="Vehicle Image" style="width: 100px; height: auto;">
+                    </a>
+
+                </td>
+                <td><%= vehicle.plate %></td>
+                <td><%= vehicle.year %></td>
+                <td><%= vehicle.inspectionDate ? new Date(vehicle.inspectionDate).toDateString() : "N/A" %></td>
+            </tr>
+
+            <!-- Modal for Larger Image -->
+            <div class="modal fade" id="vehicleModal<%= index %>" tabindex="-1" aria-labelledby="modalLabel<%= index %>" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<%= index %>"><%= vehicle.name %></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="<%= vehicle.imgUrl.startsWith('http') ? vehicle.imgUrl : '/' + vehicle.imgUrl %>"
+                                 alt="Vehicle Image" style="width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </tbody>
+</table>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,63 @@
+<%- include('partials/header') -%>
+
+<div class="container my-5">
+    <h2 class="text-center">My Monthly Bills</h2>
+
+    <!-- Filter Form -->
+    <form action="/bills" method="get" class="mb-3">
+        <div class="form-row">
+            <div class="col">
+                <label for="type">Bill Type</label>
+                <select name="type" id="type" class="form-control">
+                    <option value="">Select Bill Type</option>
+                    <% uniqueTypes.forEach(type => { %>
+                        <option value="<%= type %>" <%= type === selectedType ? 'selected' : '' %>><%= type %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col">
+                <label for="address">Address</label>
+                <select name="address" id="address" class="form-control">
+                    <option value="">Select Address</option>
+                    <% uniqueAddresses.forEach(address => { %>
+                        <option value="<%= address %>" <%= address === selectedAddress ? 'selected' : '' %>><%= address %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary mt-4">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-bordered table-striped mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Bill Type</th>
+                <th>Company</th>
+                <th>Address</th>
+                <th>Account Number</th>
+                <th>Payment Method</th>
+                <th>Due Date</th>
+                <th>Contact Number</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bills.forEach(bill => { %>
+                <tr>
+                    <td class="type-column"><%= bill.type %></td>
+                    <td><%= bill.company %></td>
+                    <td class="address-column"><%= bill.address %></td>
+                    <td><%= bill.accountNumber %></td>
+                    <td><%= bill.paymentMethod %></td>
+                    <td><%= bill.dueDate ? new Date(bill.dueDate).toDateString() : "N/A" %></td>
+                    <td><%= bill.contactNumber %></td>
+                    <td class="notes-column"><%= bill.notes %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('partials/footer') -%>
