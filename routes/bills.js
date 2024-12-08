@@ -18,8 +18,13 @@ router.get("/", async (req, res) => {
         if (selectedType) filters.type = selectedType;
         if (selectedAddress) filters.address = selectedAddress;
 
-        // Fetch filtered bills from the database
-        const bills = await Bill.find(filters);
+        // Determine whether a search is being performed
+        const isSearch = selectedType || selectedAddress;
+
+        // Fetch bills based on whether a search is performed
+        const bills = isSearch
+            ? await Bill.find(filters) // Return all matching bills for a search
+            : await Bill.find().sort({ _id: -1 }).limit(5); // Return only the last 20 bills by default
 
         // Render the page with bills and filter options
         res.render("bills", {
